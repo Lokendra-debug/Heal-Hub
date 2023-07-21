@@ -40,9 +40,7 @@ const login = async (req, res) => {
                     const accessToken = jwt.sign({ userID: user._id, userRole: user.role }, process.env.AccessToken, { expiresIn: 60*60 })
                     const rerefreshToken = jwt.sign({ userID: user._id, userRole: user.role }, process.env.RerefreshToken, { expiresIn: '7d' })
 
-                    res.cookie(`accessToken`, accessToken, { domain: '.netlify.app', path: '/chesspage' })
-                    res.cookie(`rerefreshToken`, rerefreshToken, { domain: '.netlify.app', path: '/chesspage' })
-                    res.status(200).send({ "success": true, msg: "login successfully"})
+                    res.status(200).send({ "success": true, msg: "login successfully","accessToken":accessToken,"rerefreshToken":rerefreshToken})
 
                 } else {
                     return res.status(400).send({ "error": "Invalid Password" })
@@ -58,7 +56,7 @@ const login = async (req, res) => {
     }
 }
 const logout = async (req, res) => { 
-    let token = req.cookies.accessToken;
+    let token = req.headers.accessToken;
     try {
         let decoded = jwt.verify(token, process.env.AccessToken);
         redis.set(decoded.userID, token);

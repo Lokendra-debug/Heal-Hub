@@ -1,12 +1,12 @@
 const jwt = require("jsonwebtoken");
 const { redis } = require("../database/redis")
-
-
 require("dotenv").config()
+
+
 
 const auth = async (req, res, next) => {
 
-    const token = req.cookies.accessToken
+    const token=req.headers.accessToken;
 
     if (token) {
         try {
@@ -14,14 +14,11 @@ const auth = async (req, res, next) => {
             let redisValue = await redis.get(decoded.userID)
 
             if (token == redisValue) {
-
                 return res.status(400).send({ "err": "Token is Blacklisted, Session Expired" })
             }
             req.body.userID = decoded.userID
             req.body.userRole = decoded.userRole
-
             next()
-
         } catch (error) {
             if (error.name === 'TokenExpiredError') {
 
@@ -39,11 +36,12 @@ const auth = async (req, res, next) => {
 
 const refreshcb = async (req, res, next) => {
 
-    const refreshToken = req.cookies.rerefreshToken
+    const refreshToken = req.headers.rerefreshToken;
+
     try {
         const decoded = jwt.verify(refreshToken, process.env.RerefreshToken);
-        const accessToken = jwt.sign({ userID: decoded.userID, userRole: decoded.userRole }, process.env.AccessToken, { expiresIn: 60*60 })
-        res.cookie(`accessToken`, accessToken,{ sameSite: 'lax' })
+        const accessToken = jwt.sign({ userID: decoded.userID, userRole: decoded.userRole }, process.env.AccessToken, { expiresIn: 60*60 });
+        res.status(200).send({ "success": true,"accessToken":accessToken});
         next()
     } catch (error) {
         console.log(error.message)
