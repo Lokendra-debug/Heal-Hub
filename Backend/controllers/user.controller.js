@@ -56,7 +56,10 @@ const login = async (req, res) => {
     }
 }
 const logout = async (req, res) => { 
-    let token = req.headers.accessToken;
+    
+    let token = req.headers.accesstoken;
+    console.log(token)
+    
     try {
         let decoded = jwt.verify(token, process.env.AccessToken);
         redis.set(decoded.userID, token);
