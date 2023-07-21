@@ -46,7 +46,7 @@ const refreshcb = async (req, res, next) => {
     try {
         const decoded = jwt.verify(refreshToken, process.env.RerefreshToken);
         const accessToken = jwt.sign({ userID: decoded.userID, userRole: decoded.userRole }, process.env.AccessToken, { expiresIn: 60*60 });
-        res.status(200).send({ "success": true,"accesstoken":accessToken});
+        res.status(200).send({ "success": true,"accessToken":accessToken});
         next()
     } catch (error) {
         console.log(error.message)
