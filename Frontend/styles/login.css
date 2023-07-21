@@ -1,0 +1,81 @@
+main {
+    background-color: peachpuff;
+}
+#maindiv {
+    /* border: 1px solid red; */
+    width: 50%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border: solid 2px peachpuff;
+  }
+  #from {
+    /* border: 1px solid red; */
+    width: 60%;
+    margin: 100px auto 100px auto;
+    padding: 30px;
+    text-align: center;
+    /* height: 450px; */
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+      rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-radius: 5px;
+  }
+  #maindiv form {
+    margin-top: 20px;
+  }
+  #maindiv form p {
+    font-size: small;
+  }
+  #maindiv form a {
+    color: #0073ff;
+  }
+  #maindiv form .temp {
+    margin-top: 10px;
+  }
+  
+  #from .input {
+    width: 250px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 10px;
+    margin-bottom: 16px;
+  }
+  #maindiv form #icons-auth {
+    display: block;
+  }
+  #loginbtn {
+    width: 200px;
+    border: none;
+    outline: none;
+    background-color: #232f3e;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 25px 0px 0px 0px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  #conditions {
+    text-align: center;
+    background-color: #62738a;
+    /* border: 1px solid black; */
+    font-size: small;
+    padding: 15px;
+    color: white;
+    margin-top: 220px;
+  }
+  
+  #maindiv .Googlebtn {
+    /* border: 1px solid red; */
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    width: 30px;
+    margin: 0px 10px;
+  }
+  img {
+    width: 100%;
+  }
