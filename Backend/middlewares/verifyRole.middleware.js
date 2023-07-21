@@ -1,4 +1,4 @@
-const verify=(roles)=>{
+const verifyRole=(roles)=>{
 
     return(req,res,next)=>{
         if(roles.includes(req.body.userRole)){
@@ -10,4 +10,4 @@ const verify=(roles)=>{
    
 }
 
-module.exports={verify}
+module.exports={verifyRole}
