@@ -5,8 +5,10 @@ require("dotenv").config()
 
 
 const auth = async (req, res, next) => {
+    
 
-    const token=req.headers.accessToken;
+    const token=req.headers.accesstoken;
+    
 
     if (token) {
         try {
@@ -20,16 +22,19 @@ const auth = async (req, res, next) => {
             req.body.userRole = decoded.userRole
             next()
         } catch (error) {
+        
             if (error.name === 'TokenExpiredError') {
 
                 refreshcb(req, res, next);
             }
             else {
+            
                 return res.status(401).json({ "msg": `${error.message}` })
             }
         }
     }
     else {
+        
         return res.status(400).send("please login first");
     }
 }
@@ -41,7 +46,7 @@ const refreshcb = async (req, res, next) => {
     try {
         const decoded = jwt.verify(refreshToken, process.env.RerefreshToken);
         const accessToken = jwt.sign({ userID: decoded.userID, userRole: decoded.userRole }, process.env.AccessToken, { expiresIn: 60*60 });
-        res.status(200).send({ "success": true,"accessToken":accessToken});
+        res.status(200).send({ "success": true,"accesstoken":accessToken});
         next()
     } catch (error) {
         console.log(error.message)
@@ -52,8 +57,5 @@ const refreshcb = async (req, res, next) => {
     }
 
 }
-
-
-
 
 module.exports = { auth };
