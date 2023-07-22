@@ -6,12 +6,14 @@ const { auth } = require("../middlewares/auth.middleware");
 const {
   availiabilityAdd,
   availiabilityGetAll,
+  availiabilityGetday,
   availiabilityUpdate,
   availiabilityDelete,
 } = require("../controllers/availiability.controller");
 
 availiabilityRoute.post("/add", auth, verifyRole(["Admin"]), availiabilityAdd);
-availiabilityRoute.get("/getAll", auth, availiabilityGetAll);
+availiabilityRoute.get("/getAll/:email", auth, availiabilityGetAll);
+availiabilityRoute.get("/getAll/", auth, availiabilityGetday);
 availiabilityRoute.patch(
   "/update",
   auth,
