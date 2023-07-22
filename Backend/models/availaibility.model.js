@@ -12,6 +12,6 @@ const availabilitySlotSchema = new mongoose.Schema({
   },
 });
 
-const Availability = mongoose.model("Availability", availabilitySlotSchema);
+const AvailabilitySlot = mongoose.model("Availability", availabilitySlotSchema);
 
-module.exports = { Availability };
+module.exports = { AvailabilitySlot };
