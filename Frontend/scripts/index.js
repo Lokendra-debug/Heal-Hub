@@ -45,14 +45,19 @@ function change_info() {
 
 
   info.append(div1, div2);
+
+    // Add event listener to the "Sign Out" button
+    let signout_btn = document.getElementById("sign_out_btn");
+    if (signout_btn != null) {
+      signout_btn.addEventListener("click", signout);
+    }
 }
 
 //signout
-let signout_btn = document.getElementById("sign_out_btn");
 let token = (localStorage.getItem('token'));
 let refreshToken = localStorage.getItem('refreshToken');
 
-let url = "http://localhost:4000/users/logout"
+let url = "https://colorful-ant-neckerchief.cyclic.app/users/logout"
 function signout() {
   fetch(url, {
     method: 'POST',
@@ -65,6 +70,8 @@ function signout() {
   .then(response => {
     if (response.ok) {
       localStorage.removeItem("name");
+      localStorage.removeItem('token');
+      localStorage.removeItem('refreshToken');
       window.location.href = './index.html'; 
     } else {
       console.error('Logout failed:', response.statusText);
@@ -74,6 +81,4 @@ function signout() {
     console.error('Logout failed:', error);
   });
 }
-if (signout_btn != null) {
-  signout_btn.addEventListener("click", signout);
-}
+

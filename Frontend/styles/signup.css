@@ -59,3 +59,21 @@ main {
     cursor: pointer;
     font-weight: 500;
   }
+
+  @media (max-width: 1050px) {
+    #from .input {
+        width: 150px;
+    }
+    #Signupbtn {
+      width: 100px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    #from .input {
+      width: 100px;
+    }
+    #Signupbtn {
+      width: 100px;
+    }
+  }

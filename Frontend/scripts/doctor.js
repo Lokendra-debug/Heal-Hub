@@ -37,26 +37,31 @@
     image.alt = doctor.name;
     card.appendChild(image);
   
+    const details = document.createElement('div');
+    details.classList.add('doctor-details');
+  
     const name = document.createElement('div');
     name.classList.add('doctor-name');
     name.textContent = doctor.name;
-    card.appendChild(name);
+    details.appendChild(name);
   
     const email = document.createElement('div');
     email.classList.add('doctor-email');
     email.textContent = `Email: ${doctor.email}`;
-    card.appendChild(email);
+    details.appendChild(email);
   
     const contact = document.createElement('div');
     contact.classList.add('doctor-contact');
     contact.textContent = `Contact: ${doctor.contact}`;
-    card.appendChild(contact);
+    details.appendChild(contact);
   
     const specialties = document.createElement('div');
     specialties.classList.add('doctor-specialties');
-    specialties.textContent = `Specialties: ${doctor.specialties.join(', ')}`;
-    card.appendChild(specialties);
-
+    specialties.textContent = `Specialty: ${doctor.specialties.join(', ')}`;
+    details.appendChild(specialties);
+  
+    card.appendChild(details);
+  
     const buttonContainer = document.createElement('div');
     buttonContainer.classList.add('doctor-button-container');
   
@@ -64,12 +69,13 @@
     button.classList.add('doctor-button');
     button.textContent = 'Book Appointment';
     buttonContainer.appendChild(button);
+  
+    card.appendChild(buttonContainer);
     
     button.addEventListener('click', () => {
         localStorage.setItem("doctorEmail", `${doctor.email}`)
         window.location.href = "../views/appointment.html";; // Redirect to slot.html with doctor's ID as a parameter
     });
-    card.appendChild(buttonContainer);
     
     return card;
   }
