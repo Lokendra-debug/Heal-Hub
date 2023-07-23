@@ -21,3 +21,8 @@ const appointmentSchema = new mongoose.Schema({
 const Appointment = mongoose.model("Appointment", appointmentSchema);
 
 module.exports = { Appointment };
+
+
+// "user":"saman@gmail.com",
+// "doctor":"drbhai@gmail.com",
+// "startTime":"2021-06-22T21:30:34.736+00:00"

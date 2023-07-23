@@ -12,8 +12,8 @@ const {
 } = require("../controllers/availiability.controller");
 
 availiabilityRoute.post("/add", auth, verifyRole(["Admin"]), availiabilityAdd);
-availiabilityRoute.get("/getAll/:email", auth, availiabilityGetAll);
-availiabilityRoute.get("/getAll/", auth, availiabilityGetday);
+availiabilityRoute.get("/get", auth, availiabilityGetAll);
+// availiabilityRoute.get("/getAll/", auth, availiabilityGetday);
 availiabilityRoute.patch(
   "/update",
   auth,

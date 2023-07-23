@@ -7,6 +7,8 @@ var cookieParser = require('cookie-parser')
 const {connection}=require("./database/db")
 const {userRoute}=require("./routes/user.route")
 const {doctorRoute}=require("./routes/doctor.route")
+const { availiabilityRoute}=require("./routes/availaibility.route")
+const {appointmentRoute}=require("./routes/apointment.route")
 
 
 
@@ -23,6 +25,8 @@ app.get("/",async(req,res)=>{
 
 app.use("/users",userRoute)
 app.use("/doctors",doctorRoute)
+app.use("/availabilitySlot",availiabilityRoute)
+app.use("/appointment",appointmentRoute)
 
 
 app.all("*",(req,res)=>{

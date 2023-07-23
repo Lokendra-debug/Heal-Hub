@@ -15,8 +15,7 @@ const doctorAdd = async (req, res) => {
 
 const doctorGetAll = async (req, res) => {
   try {
-    const { email } = req.params.email;
-    const doctorGet = await Doctor.find({ doctor: email });
+    const doctorGet = await Doctor.find();
     res.status(200).send(doctorGet);
   } catch (error) {
     res.status(400).send({ error: error.message });

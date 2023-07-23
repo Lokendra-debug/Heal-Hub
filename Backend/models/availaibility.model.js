@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const availabilitySlotSchema = new mongoose.Schema({
   doctor: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     ref: "Doctor",
     required: true,
   },
@@ -15,3 +15,7 @@ const availabilitySlotSchema = new mongoose.Schema({
 const AvailabilitySlot = mongoose.model("Availability", availabilitySlotSchema);
 
 module.exports = { AvailabilitySlot };
+
+
+// "doctor":"druncle@gmail.com",
+// "startTime":"2002-02-24"
