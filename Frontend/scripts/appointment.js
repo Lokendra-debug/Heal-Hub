@@ -1,6 +1,8 @@
+const url="https://colorful-ant-neckerchief.cyclic.app/"
+
 async function fetchDoctorDetails(email) {
     try {
-        const response = await fetch(`/api/doctors?email=${email}`);
+        const response = await fetch(`${url}+appointment/getAll/${email}`);
         const data = await response.json();
         return data;
     } catch (error) {
