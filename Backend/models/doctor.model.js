@@ -3,8 +3,7 @@ const mongoose = require("mongoose");
 const doctorSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  avatar:{ type: String,
-    required: true},
+  avatar:{ type: String},
   contact: {
     type: Number,
     required: true,
@@ -16,3 +15,9 @@ const doctorSchema = new mongoose.Schema({
 const Doctor = mongoose.model("Doctor", doctorSchema);
 
 module.exports = { Doctor };
+
+// "name":"drbhai",
+// "email":"drbhai@gmail.com",
+// "avatar":"",
+// "contact":1234567890,
+// "specialties":"heart"

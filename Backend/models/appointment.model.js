@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 
 const appointmentSchema = new mongoose.Schema({
   user: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     ref: "User",
     required: true,
   },
   doctor: {
-    type: "string",
+    type: String,
     ref: "Doctor",
     required: true,
   },
@@ -21,3 +21,8 @@ const appointmentSchema = new mongoose.Schema({
 const Appointment = mongoose.model("Appointment", appointmentSchema);
 
 module.exports = { Appointment };
+
+
+// "user":"saman@gmail.com",
+// "doctor":"drbhai@gmail.com",
+// "startTime":"2021-06-22T21:30:34.736+00:00"

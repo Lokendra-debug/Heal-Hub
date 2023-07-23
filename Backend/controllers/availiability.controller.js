@@ -1,9 +1,9 @@
 const { AvailabilitySlot } = require("../models/availaibility.model");
 
 const availiabilityAdd = async (req, res) => {
-  const { email, time } = req.body;
+  const { doctor, startTime } = req.body;
   try {
-    const data = new AvailabilitySlot({ email, time });
+    const data = new AvailabilitySlot({ doctor, startTime });
     await data.save();
     return res
       .status(200)
@@ -14,11 +14,14 @@ const availiabilityAdd = async (req, res) => {
 };
 
 const availiabilityGetAll = async (req, res) => {
+  
   try {
-    const { email } = req.params.email;
+    const  email = req.query.email;
+    console.log(email)
     const availiabilityGet = await AvailabilitySlot.find({ doctor: email });
     res.status(200).send(availiabilityGet);
   } catch (error) {
+    console.log(error)
     res.status(400).send({ error: error.message });
   }
 };

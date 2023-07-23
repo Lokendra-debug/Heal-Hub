@@ -1,9 +1,9 @@
 const { Appointment } = require("../models/appointment.model");
 
 const appointmentAdd = async (req, res) => {
-  const { email, time } = req.body;
+  const { doctor,user, startTime } = req.body;
   try {
-    const data = new Appointment({ email, time });
+    const data = new Appointment({ doctor,user, startTime});
     await data.save();
     return res
       .status(200)
