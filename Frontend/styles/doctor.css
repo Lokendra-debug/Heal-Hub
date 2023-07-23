@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .doctor-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .doctor-image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .doctor-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .doctor-email {
+    color: #444;
+    margin-top: 5px;
+  }
+  
+  .doctor-contact {
+    color: #777;
+    margin-top: 5px;
+  }
+  
+  .doctor-specialties {
+    margin-top: 10px;
+  }
