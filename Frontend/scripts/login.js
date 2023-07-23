@@ -9,7 +9,7 @@ login.addEventListener("click", async (e) => {
 
 
   try {
-    let url = "http://localhost:4000/users/login";
+    let url = "https://colorful-ant-neckerchief.cyclic.app/users/login";
 
     let response = await fetch(url, {
       method: "POST",
@@ -26,10 +26,10 @@ login.addEventListener("click", async (e) => {
     localStorage.setItem("refreshToken", res.rerefreshToken);
     if(response.ok) {
         alert(`${payload.email} Successfully login`)
+        window.location.href = "../views/doctors.html";
     } else {
         alert('Invalid credentials')
     }
-    window.location.href = "../index.html";
     
   } catch (error) {
     console.log(error.message);
