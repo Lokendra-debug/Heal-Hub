@@ -33,7 +33,7 @@ async function fetchAndRenderDoctorAvailability(email) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const doctorEmail = localStorage.getItem("doctoremail");
+    const doctorEmail = localStorage.getItem("doctorEmail");
     const doctorDetails = await fetchDoctorDetails(doctorEmail);
     renderDoctorDetails(doctorDetails);
     fetchAndRenderDoctorAvailability(doctorEmail);
