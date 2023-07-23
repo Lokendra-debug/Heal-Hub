@@ -1,0 +1,33 @@
+.doctor-details {
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .doctor-details h2 {
+    color: #333;
+  }
+  
+  .doctor-details img.avatar {
+    max-width: 100px;
+    border-radius: 50%;
+  }
+  
+  .doctor-details p {
+    margin: 10px 0;
+  }
+  
+  /* CSS for doctor availability section */
+  .doctor-availability {
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .doctor-availability h2 {
+    color: #333;
+  }
