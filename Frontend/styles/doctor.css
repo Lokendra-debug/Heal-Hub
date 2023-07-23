@@ -8,6 +8,10 @@ body {
     text-align: center;
   }
   
+  .doctors-container {
+    width: 60%;
+    margin: auto;
+  }
   .doctor-card {
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -40,4 +44,24 @@ body {
   
   .doctor-specialties {
     margin-top: 10px;
+  }
+
+  .doctor-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .doctor-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .doctor-button:hover {
+    background-color: #0056b3;
   }

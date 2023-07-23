@@ -1,17 +1,30 @@
 // Function to fetch doctors' data from the server
 
-let url = "http://localhost/doctors/getAll"
+  url = "https://colorful-ant-neckerchief.cyclic.app"
+  token = localStorage.getItem('token');
+  refreshToken = localStorage.getItem('refreshToken');
 
-async function fetchDoctorsData() {
-    try {
-      const response = await fetch('/doctors');
-      const doctorsData = await response.json();
-      return doctorsData;
-    } catch (error) {
-      console.error('Error fetching doctors data:', error.message);
-      return [];
+    async function fetchDoctorsData(url, token) {
+        try {
+        const response = await fetch(`${url}/doctors/getAll`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "accessToken": `${token}`,
+            "refreshToken": `${refreshToken}`
+        },
+        });
+        
+        const doctorsData = await response.json();
+        console.log(doctorsData);
+        return doctorsData;
+        } catch (error) {
+        console.error('Error fetching doctors data:', error.message);
+        return [];
+        }
     }
-  }
+ 
+
   
   // Function to create a doctor card and display the data
   function createDoctorCard(doctor) {
@@ -20,7 +33,7 @@ async function fetchDoctorsData() {
   
     const image = document.createElement('img');
     image.classList.add('doctor-image');
-    image.src = doctor.image;
+    image.src = doctor.avatar;
     image.alt = doctor.name;
     card.appendChild(image);
   
@@ -43,7 +56,21 @@ async function fetchDoctorsData() {
     specialties.classList.add('doctor-specialties');
     specialties.textContent = `Specialties: ${doctor.specialties.join(', ')}`;
     card.appendChild(specialties);
+
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('doctor-button-container');
   
+    const button = document.createElement('button');
+    button.classList.add('doctor-button');
+    button.textContent = 'Book Appointment';
+    buttonContainer.appendChild(button);
+    
+    button.addEventListener('click', () => {
+        localStorage.setItem("doctorEmail", `${doctor.email}`)
+        window.location.href = "../views/appointment.html";; // Redirect to slot.html with doctor's ID as a parameter
+    });
+    card.appendChild(buttonContainer);
+    
     return card;
   }
   
@@ -52,7 +79,7 @@ async function fetchDoctorsData() {
     const doctorsContainer = document.getElementById('doctorsContainer');
     doctorsContainer.innerHTML = '<p>Loading...</p>';
   
-    const doctorsData = await fetchDoctorsData();
+    const doctorsData = await fetchDoctorsData(url, token);
   
     if (doctorsData.length === 0) {
       doctorsContainer.innerHTML = '<p>No doctors data available.</p>';
