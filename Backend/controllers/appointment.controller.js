@@ -1,33 +1,33 @@
-const { AvailabilitySlot } = require("../models/availaibility.model");
+const { Appointment } = require("../models/appointment.model");
 
-const availiabilityAdd = async (req, res) => {
+const appointmentAdd = async (req, res) => {
   const { email, time } = req.body;
   try {
-    const data = new AvailabilitySlot({ email, time });
+    const data = new Appointment({ email, time });
     await data.save();
     return res
       .status(200)
-      .send({ msg: "New Availability slot has been added", data: data });
+      .send({ msg: "New Appointment has been added", data: data });
   } catch (error) {
     res.status(400).send({ error: error.message });
   }
 };
 
-const availiabilityGetAll = async (req, res) => {
+const appointmentGetAll = async (req, res) => {
   try {
     const { email } = req.params.email;
-    const availiabilityGet = await AvailabilitySlot.find({ doctor: email });
-    res.status(200).send(availiabilityGet);
+    const AppointmentGet = await Appointment.find({ doctor: email });
+    res.status(200).send(AppointmentGet);
   } catch (error) {
     res.status(400).send({ error: error.message });
   }
 };
 
-const availiabilityGetday = async (req, res) => {
+const appointmentGetday = async (req, res) => {
   const startDate = req.query.startDate;
   const endDate = req.query.endDate;
   try {
-    let hooper = AvailabilitySlot.aggregate([
+    let hooper = Appointment.aggregate([
       {
         $match: {
           startTime: {
@@ -44,11 +44,11 @@ const availiabilityGetday = async (req, res) => {
   }
 };
 
-const availiabilityUpdate = async (req, res) => {
+const appointmentUpdate = async (req, res) => {
   try {
     const { email, date } = req.params;
     const updatedSlot = req.body;
-    const slot = await AvailabilitySlot.findOneAndUpdate(
+    const slot = await Appointment.findOneAndUpdate(
       { email, date },
       updatedSlot,
       {
@@ -61,10 +61,10 @@ const availiabilityUpdate = async (req, res) => {
   }
 };
 
-const availiabilityDelete = async (req, res) => {
+const appointmentDelete = async (req, res) => {
   try {
     const { email, date } = req.params;
-    const slot = await AvailabilitySlot.findOneAndRemove({ email, date });
+    const slot = await Appointment.findOneAndRemove({ email, date });
     if (!slot) {
       return res.status(404).json({ message: "Slot not found" });
     }
@@ -75,9 +75,9 @@ const availiabilityDelete = async (req, res) => {
 };
 
 module.exports = {
-  availiabilityAdd,
-  availiabilityGetAll,
-  availiabilityGetday,
-  availiabilityUpdate,
-  availiabilityDelete,
+  appointmentAdd,
+  appointmentGetAll,
+  appointmentGetday,
+  appointmentUpdate,
+  appointmentDelete,
 };
