@@ -12,7 +12,7 @@ onSignup.addEventListener("click", async (e) => {
   console.log(payload);
 
   try {
-    let url = "http://localhost:4000/users/register";
+    let url = "https://colorful-ant-neckerchief.cyclic.app/users/register";
 
     let responce = await fetch(url, {
       method: "POST",
@@ -24,9 +24,13 @@ onSignup.addEventListener("click", async (e) => {
 
     let res = await responce.json();
     console.log("res", res);
-    localStorage.setItem("name", (payload.name));
-    alert(`${payload.email} has successfully register`);
-    window.location.href = "../views/login.html";
+    
+    if(responce.ok){
+      localStorage.setItem("name", (payload.name));
+      alert(`${payload.email} has successfully register`);
+      window.location.href = "../views/login.html";
+    }
+    
   } catch (error) {
     console.log(error.message);
   }

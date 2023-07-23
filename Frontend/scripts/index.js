@@ -50,6 +50,7 @@ function change_info() {
 //signout
 let signout_btn = document.getElementById("sign_out_btn");
 let token = (localStorage.getItem('token'));
+let refreshToken = localStorage.getItem('refreshToken');
 
 let url = "http://localhost:4000/users/logout"
 function signout() {
@@ -58,6 +59,7 @@ function signout() {
     headers: {
       'Content-Type': 'application/json', 
        'accessToken' : `${token}`,
+       'refreshToken': `${refreshToken}`
     },
   })
   .then(response => {
