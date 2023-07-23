@@ -1,4 +1,84 @@
 body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  background-color: peachpuff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.doctors-container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  gap: 20px;
+  margin: 80px auto 50px auto;
+}
+
+.doctor-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.doctor-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.doctor-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.doctor-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.doctor-email,
+.doctor-contact {
+  color: #444;
+  margin-bottom: 5px;
+}
+
+.doctor-specialties {
+  margin-bottom: 10px;
+}
+
+.doctor-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.doctor-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007BFF;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.doctor-button:hover {
+  background-color: #0056b3;
+}
+
+/* body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
@@ -64,4 +144,4 @@ body {
   
   .doctor-button:hover {
     background-color: #0056b3;
-  }
+  } */
