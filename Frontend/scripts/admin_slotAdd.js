@@ -7,8 +7,8 @@ sidebarBtn.onclick = function () {
     sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
   } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
 };
-let accessToken = JSON.parse(localStorage.getItem("accessToken")) || null;
-let rerefreshToken = JSON.parse(localStorage.getItem("rerefreshToken")) || null;
+let token = localStorage.getItem("token");
+let refreshToken = localStorage.getItem("refreshToken");
 // async function fetch_Slot() {
 //   let req = await fetch(`${url}beverage`);
 //   let res = await req.json();
@@ -48,18 +48,20 @@ async function addSlot() {
       slotTime: addSlotTime.value,
     };
 
-    let register_request = await fetch(`${url}beverage`, {
+    let register_request = await fetch(`${url}/appointment/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        accessToken: `${token}`,
+        refreshToken: `${refreshToken}`,
       },
       body: JSON.stringify(obj),
     });
 
     console.log(register_request);
-    noOfSlotAdded++;
-    localStorage.setItem("noOfSlotAddedcount", JSON.stringify(noOfSlotAdded));
-    console.log(noOfSlotAdded);
+    // noOfSlotAdded++;
+    // localStorage.setItem("noOfSlotAddedcount", JSON.stringify(noOfSlotAdded));
+    // console.log(noOfSlotAdded);
   } catch (error) {
     console.log(error);
   }
