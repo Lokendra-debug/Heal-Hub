@@ -8,24 +8,37 @@ sidebarBtn.onclick = function () {
   } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
 };
 
-let accessToken = JSON.parse(localStorage.getItem("accessToken")) || [];
-let rerefreshToken = JSON.parse(localStorage.getItem("rerefreshToken")) || [];
+let accessToken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGJkNTg0MjM4ZjJkMDU3ZjAwYTZhZGEiLCJ1c2VyUm9sZSI6IkFkbWluIiwiaWF0IjoxNjkwMTczMjk0LCJleHAiOjE2OTAxNzY4OTR9.4REml_0o4J7aBuHv2jX4CdmYF35srIKpP7UBuVttx_U`;
+
+let rerefreshToken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NGJkNTg0MjM4ZjJkMDU3ZjAwYTZhZGEiLCJ1c2VyUm9sZSI6IkFkbWluIiwiaWF0IjoxNjkwMTczMjk0LCJleHAiOjE2OTA3NzgwOTR9.aUb1hFoEmwcd2lxJT9SXtUuwVhtfyqOlOoFrULPwK4k`;
+
+localStorage.setItem("accessToken", JSON.stringify(accessToken));
+localStorage.setItem("rerefreshToken", JSON.stringify(rerefreshToken));
+accessToken = JSON.parse(localStorage.getItem("accessToken")) || null;
+rerefreshToken = JSON.parse(localStorage.getItem("rerefreshToken")) || null;
+console.log(accessToken, rerefreshToken);
 async function fetch_Doctor() {
-  let req = await fetch(`${url}/doctor/getAll`);
+  let req = await fetch(`${url}/doctor/getAll`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      accessToken: `${accessToken}`,
+      rerefreshToken: `${rerefreshToken}`,
+    },
+  });
   let res = await req.json();
   let Doctor_details = document.querySelector(".sales-details");
   let DoctorData = res;
   console.log(DoctorData);
   Doctor_details.innerHTML = DoctorData.map((el) => {
     return `<div class="card">
-        <div class="img"><img src="${el.image1}" ></div>
+        <div class="img"><img src="${el.avatar}" ></div>
         <div>
-        <p><span class="name">Doctor ID:- </span><span class="ans-id">${el.id}</span></p>
+        <p>
             <p><span class="name">Name:- </span><span class="ans-name">${el.name}</span></p>
-            <p><span class="name">Brand:- </span> ${el.brand}</p>
-            <p><span class="name">Gender:- </span> ${el.gender}</p>
-            <p><span class="name">Size:- </span>${el.size}</p>
-            <p><span class="name">Price:- </span>₹${el.price}</p>
+            <p><span class="name">email:- </span> ${el.email}</p>
+            <p><span class="name">contact:- </span>${el.contact}</p>
+            <p><span class="name">specialties:- </span>₹${el.specialties}</p>
         </div>
     </div>`;
   }).join("");
@@ -59,6 +72,8 @@ async function addDoctor() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        accessToken: `${accessToken}`,
+        refreshToken: `${rerefreshToken}`,
       },
       body: JSON.stringify(obj),
     });
