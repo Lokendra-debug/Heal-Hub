@@ -6,6 +6,12 @@
 
     async function fetchDoctorsData(url, token) {
         try {
+          if (!token || !refreshToken) {
+            // User is not logged in, handle the situation (e.g., redirect to login page)
+            alert("User is not logged in. Redirecting to login page...");
+            window.location.href = "../views/login.html"
+            return [];
+        }
         const response = await fetch(`${url}/doctors/getAll`, {
         method: "GET",
         headers: {
