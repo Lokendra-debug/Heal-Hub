@@ -7,7 +7,8 @@ sidebarBtn.onclick = function () {
     sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
   } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
 };
-
+let accessToken = JSON.parse(localStorage.getItem("accessToken")) || null;
+let rerefreshToken = JSON.parse(localStorage.getItem("rerefreshToken")) || null;
 // async function fetch_Slot() {
 //   let req = await fetch(`${url}beverage`);
 //   let res = await req.json();
