@@ -12,7 +12,7 @@ const {
 } = require("../controllers/availiability.controller");
 
 availiabilityRoute.post("/add", auth, verifyRole(["Admin"]), availiabilityAdd);
-availiabilityRoute.get("/get", auth, availiabilityGetAll);
+availiabilityRoute.get("/getAll", auth, availiabilityGetAll);
 // availiabilityRoute.get("/getAll/", auth, availiabilityGetday);
 availiabilityRoute.patch(
   "/update",
