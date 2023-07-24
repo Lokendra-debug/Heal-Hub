@@ -32,10 +32,10 @@ function renderDoctorDetails(doctor) {
     return;
   }
   console.log(doctor[0]);
-  const { name, email, image, contact, specialties } = doctor[0];
+  const { name, email, avatar, contact, specialties } = doctor[0];
   doctorDetailsDiv.innerHTML = `
         <h2>${name}</h2>
-        <img class="avatar" src="${image}" alt="Doctor Avatar">
+        <img class="avatar" src="${avatar}" alt="Doctor Avatar">
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Contact:</strong> ${contact}</p>
         <p><strong>Specialties:</strong> ${specialties.join(", ")}</p>
