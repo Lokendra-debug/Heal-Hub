@@ -15,7 +15,7 @@ function validateForm(event) {
         email: email,
         password: password
     };
-    fetch(url, {
+    fetch(`${url}users/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -29,6 +29,7 @@ function validateForm(event) {
             localStorage.setItem("accesstoken", responseData.accessToken);
             localStorage.setItem("rerefreshtoken", responseData.rerefreshToken);
             alert('Login successful!');
+            window.location.href="admin.html";
         } else {
             alert('Login failed. Please check your credentials.');
         }
